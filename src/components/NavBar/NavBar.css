@@ -1,4 +1,105 @@
 .nav-bar {
   background-color: gold;
-  height: 85px;
+  height: 110px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.nav-logo {
+  grid-column: 1/2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 100px;
+  filter: drop-shadow(5px 3px 4px black)
+}
+
+.logo:hover {
+  filter: drop-shadow(7px 3px 5px black)
+}
+
+
+.nav-wrapper {
+  background-color: gold;
+  grid-column: 3/4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-links {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-links:hover {
+  box-shadow: 10px 10px 10px 10px black;
+  color: gold;
+  transition: .5s;
+}
+
+#login {
+  background-color: rgb(87,141,232);
+  box-shadow: 1px 1px 1px 1px black;
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+#login:hover {
+  box-shadow: 2px 2px 2px 2px gold;
+  color: gold;
+  transition: .5s;
+}
+
+#signup {
+  background-color: rgb(87,141,232);
+  box-shadow: 1px 1px 1px 1px black;
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+#signup:hover {
+  box-shadow: 2px 2px 2px 2px gold;
+  color: gold;
+  transition: .5s;
+}
+
+#user {
+  background-color: rgb(87,141,232);
+  box-shadow: 1px 1px 1px 1px black;
+  width: 140px;
+  height: 30px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+#user:hover {
+  box-shadow: 2px 2px 2px 2px gold;
+  color: gold;
+  transition: .5s;
+}
+
+#logout {
+  background-color: rgb(87,141,232);
+  box-shadow: 1px 1px 1px 1px black;
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+#logout:hover {
+  box-shadow: 2px 2px 2px 2px gold;
+  color: gold;
+  transition: .5s;
 }
