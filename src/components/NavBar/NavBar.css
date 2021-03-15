@@ -1,6 +1,6 @@
 .nav-bar {
   background-color: gold;
-  height: 110px;
+  height: 126px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
@@ -22,7 +22,7 @@
 }
 
 
-.nav-wrapper {
+.nav-wrap {
   background-color: gold;
   grid-column: 3/4;
   display: flex;
