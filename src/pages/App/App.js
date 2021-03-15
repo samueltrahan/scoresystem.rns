@@ -9,6 +9,7 @@ import ForgotPasswordPage from '../ForgotPasswordPage/ForgotPasswordPage'
 import ResetPasswordPage from '../ResetPasswordPage/ResetPasswordPage'
 import UserPage from '../UserPage/UserPage';
 import LandingPage from '../LandingPage/LandingPage';
+import ScorecardPage from '../ScoreCardPage/ScarecardPage';
 import Footer from '../../components/Footer/Footer';
 
 import userService from '../../services/userService';
@@ -83,6 +84,10 @@ const App = () => {
         }></Route>
         <Route exact path="/" render={() => 
         <LandingPage />
+        }>
+        </Route>
+        <Route exact path="/scorecard" render={() => 
+        <ScorecardPage />
         }>
         </Route>
       </Switch>
