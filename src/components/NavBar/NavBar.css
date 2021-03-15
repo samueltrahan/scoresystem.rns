@@ -1,13 +1,4 @@
 .nav-bar {
-    background-color: aquamarine;
-    height: 120px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-}
-
-.heading {
-    grid-column: 2/3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: gold;
+  height: 85px;
 }
