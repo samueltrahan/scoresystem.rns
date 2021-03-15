@@ -1,0 +1,30 @@
+.footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: gold;
+}
+
+.samuel {
+    grid-column: 1/2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-links {
+    grid-column: 3/4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.links {
+    text-decoration: none;
+    color: rgb(87,141,232);
+    margin: 10px;
+}
+
+.links:hover {
+    color: gold;
+    transition: .5s;
+}

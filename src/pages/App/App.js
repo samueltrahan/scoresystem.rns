@@ -9,6 +9,7 @@ import ForgotPasswordPage from '../ForgotPasswordPage/ForgotPasswordPage'
 import ResetPasswordPage from '../ResetPasswordPage/ResetPasswordPage'
 import UserPage from '../UserPage/UserPage';
 import LandingPage from '../LandingPage/LandingPage';
+import Footer from '../../components/Footer/Footer';
 
 import userService from '../../services/userService';
 
@@ -85,6 +86,7 @@ const App = () => {
         }>
         </Route>
       </Switch>
+        <Footer />
     </>
   );
 };
