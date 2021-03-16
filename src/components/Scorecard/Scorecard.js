@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
+import {useHistory} from 'react-router-dom';
 import './Scorecard.css';
 import BlackDot from '../../assets/blackdot.png';
 import YellowDot from '../../assets/yellowdot.png';
@@ -7,6 +8,9 @@ import Green from '../../assets/greendot.png';
 import Tan from '../../assets/tandot.png';
 
 export default function Scorecard({scorecard}) {
+
+    const history = useHistory();
+
     return (
         <div className="scorecard-comp">
             <div className="hole-info">
@@ -22,16 +26,44 @@ export default function Scorecard({scorecard}) {
             <div className="score">
             {scorecard.hole}
             </div>
-            <div className="score-player">
+            <div 
+            onKeyPress={event => {
+                if(event.key === 'Enter') {
+                    history.push('/score')
+                }
+            }}
+            onClick={() => history.push('/score')}
+            className="score-player">
                 Score
             </div>
-            <div className="fairways-player">
+            <div 
+             onKeyPress={event => {
+                if(event.key === 'Enter') {
+                    history.push('/fairways')
+                }
+            }}
+            onClick={() => history.push('/fairways')}
+            className="fairways-player">
                 Fairways
             </div>
-            <div className="greens-player">
+            <div 
+             onKeyPress={event => {
+                if(event.key === 'Enter') {
+                    history.push('/greens')
+                }
+            }}
+            onClick={() => history.push('/greens')}
+            className="greens-player">
                 Greens
             </div>
-            <div className="putts-player">
+            <div 
+             onKeyPress={event => {
+                if(event.key === 'Enter') {
+                    history.push('/putts')
+                }
+            }}
+            onClick={() => history.push('/putts')}
+            className="putts-player">
                 Putts
             </div>
         </div>

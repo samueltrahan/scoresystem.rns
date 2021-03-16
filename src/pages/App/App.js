@@ -11,6 +11,10 @@ import UserPage from '../UserPage/UserPage';
 import LandingPage from '../LandingPage/LandingPage';
 import ScorecardPage from '../ScoreCardPage/ScarecardPage';
 import Footer from '../../components/Footer/Footer';
+import RecordScore from '../RecordScore/RecordScore';
+import RecordFairways from '../RecordFairways/RecordFairways';
+import RecordGreens from '../RecordGreens/RecordGreens';
+import RecordPutts from '../RecordPutts/RecordPutts';
 
 import userService from '../../services/userService';
 
@@ -88,6 +92,22 @@ const App = () => {
         </Route>
         <Route exact path="/scorecard" render={() => 
         <ScorecardPage />
+        }>
+        </Route>
+        <Route exact path="/score" render={() => 
+          <RecordScore />
+        }>
+        </Route>
+        <Route exact path='/fairways' render={() =>
+          <RecordFairways />
+        }>
+        </Route>
+        <Route exact path="/greens" render={() => 
+          <RecordGreens />
+        }>
+        </Route>
+        <Route exact path="/putts" render={() => 
+        <RecordPutts />
         }>
         </Route>
       </Switch>
