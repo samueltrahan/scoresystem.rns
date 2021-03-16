@@ -2,7 +2,8 @@
     display: grid;
     grid-template-columns:1fr 1fr;
     grid-template-rows: 1fr 100px 100px;
-    height: 86vh;
+    height: 76vh;
+    width: 100vw;
     background: url(../../assets/caddie-page.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -17,6 +18,11 @@
     justify-content: center;
     align-items: center;
 }
+
+.landing-img {
+    width: 85vw;
+}
+
 
 .scorecard {
     grid-column: 1/2;

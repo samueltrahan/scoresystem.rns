@@ -22,6 +22,18 @@ export default function Scorecard({scorecard}) {
             <div className="score">
             {scorecard.hole}
             </div>
+            <div className="score-player">
+                Score
+            </div>
+            <div className="fairways-player">
+                Fairways
+            </div>
+            <div className="greens-player">
+                Greens
+            </div>
+            <div className="putts-player">
+                Putts
+            </div>
         </div>
     )
 }

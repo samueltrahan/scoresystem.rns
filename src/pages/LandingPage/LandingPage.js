@@ -6,7 +6,7 @@ export default function LandingPage() {
     return (
         <div className="landing-page">
             <div className="landing-image">
-                <img src="/images/caddie-logo.png" alt=""></img>
+                <img className="landing-img" src="/images/caddie-logo.png" alt=""></img>
             </div>
             <div className="scorecard">
             <Link className="landing-link" to="scorecard">SCORECARD</Link>

@@ -1,6 +1,6 @@
 .nav-bar {
   background-color: gold;
-  height: 126px;
+  height: 100px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
@@ -14,7 +14,7 @@
 
 .logo {
   width: 100px;
-  filter: drop-shadow(5px 3px 4px black)
+  filter: drop-shadow(5px 3px 4px black);
 }
 
 .logo:hover {
