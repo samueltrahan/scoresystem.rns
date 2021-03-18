@@ -91,7 +91,7 @@ const App = () => {
         }>
         </Route>
         <Route exact path="/scorecard" render={() => 
-        <ScorecardPage />
+        <ScorecardPage user={user}/>
         }>
         </Route>
         <Route exact path="/score" render={() => 

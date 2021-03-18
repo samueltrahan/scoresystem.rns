@@ -1,17 +1,29 @@
-import React from 'react';
-import './ScorecardPage.css';
-import {scoreCardDB} from '../../scorecardDB';
-import Scorecard from '../../components/Scorecard/Scorecard';
+import React from "react";
+import "./ScorecardPage.css";
+import axios from "axios";
+import { scoreCardDB } from "../../scorecardDB";
+import Scorecard from "../../components/Scorecard/Scorecard";
 
-export default function ScarecardPage() {
-    return (
-        <div>
-            <div>
-                <button className="new-round-btn">New Round</button>
-            </div>
-            {scoreCardDB.map(scorecard => 
-             <Scorecard scorecard={scorecard} />    
-            )}
-        </div>
-    )
+const farmId = 1;
+
+export default function ScarecardPage({ user }) {
+  const addNewRound = () => {
+    axios.post("http://localhost:3001/create", {
+      courseId: farmId,
+      user: user,
+    });
+  };
+
+  return (
+    <div>
+      <div>
+        <button onClick={addNewRound} className="new-round-btn">
+          New Round
+        </button>
+      </div>
+      {scoreCardDB.map((scorecard) => (
+        <Scorecard scorecard={scorecard} />
+      ))}
+    </div>
+  );
 }

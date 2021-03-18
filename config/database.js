@@ -1,6 +1,12 @@
 const mysql = require('mysql');
 
-const mysqlPW = process.env.MYSQL_PW
+const mysqlPW = process.env.MYSQL_PW;
+const express = require('express');
+const app = express();
+const cors = require("cors");
+
+app.use(cors());
+app.use(express.json());
 
 let db
 
@@ -30,8 +36,8 @@ function createUserTable() {
     })
 }
 
-function createFriendTable() {
-    db.query("CREATE TABLE friends(user1id INT, user2id INT);", (err, res) => {
+function createCourseTable() {
+    db.query("CREATE TABLE courses(userId INT FK, courseId INT);", (err, res) => {
         if (err) throw err;
         console.log('Friend table created.')
     })
@@ -46,8 +52,8 @@ initialConnection.query('SHOW DATABASES;', (err, databases) => {
             if(!res.some(table => table.TABLE_NAME === 'users')) {
                 createUserTable()
             }
-            if(!res.some(table => table.TABLE_NAME === 'friends')) {
-                createFriendTable()
+            if(!res.some(table => table.TABLE_NAME === 'course')) {
+                createCourseTable()
             }
         })
     } else {
@@ -66,5 +72,23 @@ let mysqlCon = mysql.createConnection({
     password:`${mysqlPW}`,
     database:'scoringSystem'
 });
+
+
+app.post("/create", (req, res) => {
+    console.log(req.body)
+    const courseId = req.body.courseId;
+    const user = req.body.user;
+    db.query(
+        "INSERT INTO courses (courseId, user) VALUES (?,?)",
+        [courseId, user],
+        (err, result) => {
+            if(err) {
+                console.log(err)
+            } else {
+                console.log("values inserted")
+            }
+        }
+    )
+})
 
 module.exports = mysqlCon
