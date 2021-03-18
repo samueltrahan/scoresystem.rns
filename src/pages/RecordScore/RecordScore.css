@@ -1,0 +1,25 @@
+.record-score-page {
+    min-height: 79vh;
+}
+
+.record-hole {
+    display: flex;
+    justify-content: center;
+}
+
+.record-par {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.record-yardages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.record-dots {
+    width: 50px;
+}

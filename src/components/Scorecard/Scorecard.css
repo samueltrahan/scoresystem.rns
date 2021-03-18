@@ -41,7 +41,9 @@
 
 .score-player {
     border: 1px solid black;
-  
+    text-decoration: none;
+    height: 100%;
+    color: black;
 }
 
 .fairways-player {

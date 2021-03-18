@@ -37,7 +37,7 @@ function createUserTable() {
 }
 
 function createCourseTable() {
-    db.query("CREATE TABLE courses(userId INT FK, courseId INT);", (err, res) => {
+    db.query("CREATE TABLE courses(userId INT, FOREIGN KEY(userId) REFERENCES users(id), courseId INT, PRIMARY KEY(courseId));", (err, res) => {
         if (err) throw err;
         console.log('Friend table created.')
     })

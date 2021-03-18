@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Switch } from 'react-router-dom';
 
 import NavBar from "../../components/NavBar/NavBar";
@@ -17,11 +17,13 @@ import RecordGreens from '../RecordGreens/RecordGreens';
 import RecordPutts from '../RecordPutts/RecordPutts';
 
 import userService from '../../services/userService';
+import {scoreCardDB} from '../../scorecardDB';
 
 import "./App.css";
 
 const App = () => {
   const [user, setUser] = useState('');
+  const [scoreCard, setScoreCard] =useState([])
 
   const handleLogout = () => {
     userService.logout();
@@ -36,6 +38,17 @@ const App = () => {
     if (msg.includes('Error')) return 'red-text'
     return 'green-text'
   }
+
+  const getScorecard = () => {
+    scoreCardDB.map((sc) => {
+      setScoreCard([...scoreCard, sc ])
+    })
+  }
+
+  useEffect(() => {
+    getScorecard()
+  }, [])
+
 
   return (
     <>
@@ -95,7 +108,7 @@ const App = () => {
         }>
         </Route>
         <Route exact path="/score" render={() => 
-          <RecordScore />
+          <RecordScore scoreCard={scoreCard}/>
         }>
         </Route>
         <Route exact path='/fairways' render={() =>
