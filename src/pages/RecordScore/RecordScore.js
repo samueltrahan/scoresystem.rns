@@ -8,9 +8,16 @@ import Green from '../../assets/greendot.png';
 import Tan from '../../assets/tandot.png';
 
 export default function RecordScore() {
+    const location = useLocation();
+    const [counter, setCounter] = useState(location.par)
     
-const location = useLocation();
-    
+    const incrementCount = () => {
+        setCounter( counter + 1)
+    }
+
+    const decrementCount = () => {
+        setCounter( counter - 1)
+    }
 
     return (
         <div className="record-score-page">
@@ -27,6 +34,14 @@ const location = useLocation();
                 <p><img className="record-dots" src={Silver} alt="" /> {location.silver}</p>
                 <p><img className="record-dots" src={Green} alt="" /> {location.green}</p>
                 <p> <img className="record-dots" src={Tan} alt="" /> {location.tan}</p>
+            </div>
+            <div className="counter">
+            <button className="counter-btn" onClick={decrementCount}><i className="fas fa-arrow-left fa-2x"></i></button>
+                <h3>{counter}</h3>
+            <button className="counter-btn" onClick={incrementCount}><i className="fas fa-arrow-right fa-2x"></i> </button>
+            </div>
+            <div className="submit-score">
+                <button className="submit-btn">Record Score</button>
             </div>
         </div>
     )

@@ -1,12 +1,8 @@
 const mysql = require('mysql');
 
 const mysqlPW = process.env.MYSQL_PW;
-const express = require('express');
-const app = express();
-const cors = require("cors");
 
-app.use(cors());
-app.use(express.json());
+
 
 let db
 
@@ -37,9 +33,17 @@ function createUserTable() {
 }
 
 function createCourseTable() {
-    db.query("CREATE TABLE courses(userId INT, FOREIGN KEY(userId) REFERENCES users(id), courseId INT, PRIMARY KEY(courseId));", (err, res) => {
+    db.query('CREATE TABLE courses(id INT NOT NULL, userId INT, FOREIGN KEY(userId) REFERENCES users(id), courseId INT NOT NULL, PRIMARY KEY(courseId));', (err, res) => {
         if (err) throw err;
-        console.log('Friend table created.')
+        console.log('Courses table created.')
+    })
+}
+
+
+function createHolesTable() {
+    db.query('CREATE TABLE holes(id INT NOT NULL, courseId INT, FOREIGN KEY(courseId) REFERENCES courses(id), roundId INT NOT NULL, PRIMARY KEY(roundId), holeIndex INT NOT NULL, score INT NOT NULL));', (err, res) => {
+        if(err) throw err;
+        console.log("Holes table created.")
     })
 }
 
@@ -55,6 +59,9 @@ initialConnection.query('SHOW DATABASES;', (err, databases) => {
             if(!res.some(table => table.TABLE_NAME === 'course')) {
                 createCourseTable()
             }
+            if(!res.some(table => table.TABLE_NAME === 'holes')) {
+                createHolesTable()
+            }
         })
     } else {
         initialConnection.query(`CREATE DATABASE ${databaseName};`, (err, res) => {
@@ -62,6 +69,8 @@ initialConnection.query('SHOW DATABASES;', (err, databases) => {
             console.log(`${databaseName} database created.`)
             connectToDatabase()
             createUserTable()
+            createCourseTable()
+            createHolesTable()
         })
     }
 })
@@ -73,22 +82,5 @@ let mysqlCon = mysql.createConnection({
     database:'scoringSystem'
 });
 
-
-app.post("/create", (req, res) => {
-    console.log(req.body)
-    const courseId = req.body.courseId;
-    const user = req.body.user;
-    db.query(
-        "INSERT INTO courses (courseId, user) VALUES (?,?)",
-        [courseId, user],
-        (err, result) => {
-            if(err) {
-                console.log(err)
-            } else {
-                console.log("values inserted")
-            }
-        }
-    )
-})
 
 module.exports = mysqlCon
