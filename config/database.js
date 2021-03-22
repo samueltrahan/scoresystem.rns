@@ -32,20 +32,6 @@ function createUserTable() {
     })
 }
 
-function createCourseTable() {
-    db.query('CREATE TABLE courses(id INT NOT NULL, userId INT, FOREIGN KEY(userId) REFERENCES users(id), courseId INT NOT NULL, PRIMARY KEY(courseId));', (err, res) => {
-        if (err) throw err;
-        console.log('Courses table created.')
-    })
-}
-
-
-function createHolesTable() {
-    db.query('CREATE TABLE holes(id INT NOT NULL, courseId INT, FOREIGN KEY(courseId) REFERENCES courses(id), roundId INT NOT NULL, PRIMARY KEY(roundId), holeIndex INT NOT NULL, score INT NOT NULL));', (err, res) => {
-        if(err) throw err;
-        console.log("Holes table created.")
-    })
-}
 
 initialConnection.query('SHOW DATABASES;', (err, databases) => {
     if(err) throw err;
@@ -56,12 +42,6 @@ initialConnection.query('SHOW DATABASES;', (err, databases) => {
             if(!res.some(table => table.TABLE_NAME === 'users')) {
                 createUserTable()
             }
-            if(!res.some(table => table.TABLE_NAME === 'course')) {
-                createCourseTable()
-            }
-            if(!res.some(table => table.TABLE_NAME === 'holes')) {
-                createHolesTable()
-            }
         })
     } else {
         initialConnection.query(`CREATE DATABASE ${databaseName};`, (err, res) => {
@@ -69,8 +49,6 @@ initialConnection.query('SHOW DATABASES;', (err, databases) => {
             console.log(`${databaseName} database created.`)
             connectToDatabase()
             createUserTable()
-            createCourseTable()
-            createHolesTable()
         })
     }
 })

@@ -7,9 +7,9 @@ import Silver from "../../assets/silverdot.png";
 import Green from "../../assets/greendot.png";
 import Tan from "../../assets/tandot.png";
 import Score from './Score';
+import Fairways from './Fairways';
 
-export default function Scorecard({ scorecard, score }) {
-  const [fairway, setFairway] = useState(false);
+export default function Scorecard({ scorecard, score, fairways }) {
   const [greens, setGreens] = useState(false);
   const [putts, setPutts] = useState('')
   const history = useHistory();
@@ -58,6 +58,7 @@ export default function Scorecard({ scorecard, score }) {
         className="fairways-player"
       >
         Fairways
+        <Fairways fairways={fairways}/>
       </div>
       <div
         onKeyPress={(event) => {

@@ -12,8 +12,6 @@ export default function Score({ score, scorecard }) {
     doubleBogey: scorecard.par + 2,
     tripleBogey: scorecard.par + 3,
   };
-  console.log(score);
-  console.log(parScore.birdie);
 
   const setStyling = () => {
     <>

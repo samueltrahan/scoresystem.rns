@@ -25,6 +25,7 @@ const App = () => {
   const [user, setUser] = useState('');
   const [scoreCard, setScoreCard] =useState([])
   const [score, setScore] = useState();
+  const [fairways, setFairways] = useState(false);
   const history = useHistory();
 
   const handleLogout = () => {
@@ -53,11 +54,21 @@ const App = () => {
     history.push('/scorecard')
   }
 
+  const checkYes = () => {
+    setFairways(true)
+    console.log(fairways)
+    history.push('/scorecard')
+}
+
+const checkNo =() => {
+    setFairways(false)
+    history.push('/scorecard')
+}
+
   useEffect(() => {
     getScorecard()
    
   }, [])
-
 
   return (
     <>
@@ -113,7 +124,7 @@ const App = () => {
         }>
         </Route>
         <Route exact path="/scorecard" render={() => 
-        <ScorecardPage user={user} score={score}/>
+        <ScorecardPage user={user} score={score} fairways={fairways}/>
         }>
         </Route>
         <Route exact path="/score" render={() => 
@@ -121,7 +132,7 @@ const App = () => {
         }>
         </Route>
         <Route exact path='/fairways' render={() =>
-          <RecordFairways />
+          <RecordFairways checkYes={checkYes} checkNo={checkNo}/>
         }>
         </Route>
         <Route exact path="/greens" render={() => 
