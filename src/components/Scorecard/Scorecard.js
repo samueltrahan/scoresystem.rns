@@ -45,7 +45,7 @@ export default function Scorecard({ scorecard, score }) {
           className="score-player"
         >
           Score
-          <Score score={score}/>
+          <Score scorecard={scorecard}score={score}/>
         </div>
       </Link>
       <div
