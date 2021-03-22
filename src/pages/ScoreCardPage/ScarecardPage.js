@@ -6,7 +6,7 @@ import Scorecard from "../../components/Scorecard/Scorecard";
 
 const farmId = 1;
 
-export default function ScarecardPage({ user }) {
+export default function ScarecardPage({ user, score }) {
   const addNewRound = () => {
     axios.post("http://localhost:3001/create", {
       courseId: farmId,
@@ -22,7 +22,7 @@ export default function ScarecardPage({ user }) {
         </button>
       </div>
       {scoreCardDB.map((scorecard) => (
-        <Scorecard scorecard={scorecard} />
+        <Scorecard scorecard={scorecard} score={score} />
       ))}
     </div>
   );

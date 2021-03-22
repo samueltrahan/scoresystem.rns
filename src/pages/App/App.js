@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 
 import NavBar from "../../components/NavBar/NavBar";
 
@@ -24,6 +24,8 @@ import "./App.css";
 const App = () => {
   const [user, setUser] = useState('');
   const [scoreCard, setScoreCard] =useState([])
+  const [score, setScore] = useState();
+  const history = useHistory();
 
   const handleLogout = () => {
     userService.logout();
@@ -45,8 +47,15 @@ const App = () => {
     })
   }
 
+  const handleScoring = (e, score) => {
+    e.preventDefault();
+    setScore(score)
+    history.push('/scorecard')
+  }
+
   useEffect(() => {
     getScorecard()
+   
   }, [])
 
 
@@ -104,11 +113,11 @@ const App = () => {
         }>
         </Route>
         <Route exact path="/scorecard" render={() => 
-        <ScorecardPage user={user}/>
+        <ScorecardPage user={user} score={score}/>
         }>
         </Route>
         <Route exact path="/score" render={() => 
-          <RecordScore scoreCard={scoreCard}/>
+          <RecordScore scoreCard={scoreCard} handleScoring={handleScoring}/>
         }>
         </Route>
         <Route exact path='/fairways' render={() =>

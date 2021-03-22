@@ -6,10 +6,15 @@ import YellowDot from "../../assets/yellowdot.png";
 import Silver from "../../assets/silverdot.png";
 import Green from "../../assets/greendot.png";
 import Tan from "../../assets/tandot.png";
-import RecordScore from "../../pages/RecordScore/RecordScore";
+import Score from './Score';
 
-export default function Scorecard({ scorecard }) {
+export default function Scorecard({ scorecard, score }) {
+  const [fairway, setFairway] = useState(false);
+  const [greens, setGreens] = useState(false);
+  const [putts, setPutts] = useState('')
   const history = useHistory();
+
+ 
 
   return (
     <div className="scorecard-comp">
@@ -40,6 +45,7 @@ export default function Scorecard({ scorecard }) {
           className="score-player"
         >
           Score
+          <Score score={score}/>
         </div>
       </Link>
       <div
