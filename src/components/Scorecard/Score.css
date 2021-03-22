@@ -1,10 +1,82 @@
 .par {
-    font-size: 20px;
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .birdie {
-    font-size: 20px;
-    border-radius: 50%;
+    font-size: 27px;
+    border-radius: 70%;
     border: 2px solid black;
-    color: gold;
+    color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 43px;
+    margin-left: 18px;
+    text-shadow: 2px 2px 2px 2px black;
+}
+
+.bogey {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(87,141,232);
+    font-size: 28px;
+    border: 2px solid black;
+    width: 45px;
+    height: 40px;
+    margin-left: 18px;
+}
+
+.eagle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 8px double black;
+    border-radius: 50%;
+    width: 50px;
+    height: 45px;
+    font-size: 25px;
+    margin-left: 18px;
+    color: red;
+}
+
+.double-bogey {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 8px double black;
+    width: 50px;
+    height: 40px;
+    font-size: 22px;
+    margin-left: 16px;
+    color: rgb(87,141,232);
+}
+
+.triple-bogey {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 8px double black;
+    width: 50px;
+    height: 40px;
+    font-size: 22px;
+    margin-left: 16px;
+    color: rgb(87,141,232);
+}
+
+.albatross {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 8px double black;
+    border-radius: 50%;
+    width: 50px;
+    height: 40px;
+    font-size: 25px;
+    margin-left: 18px;
+    color: red;
 }

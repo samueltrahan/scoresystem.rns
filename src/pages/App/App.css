@@ -2,9 +2,7 @@
   text-align: center;
 }
 body {
-  width: 100%;
+  width: 100vw;
   box-sizing: border-box;
   margin: 0;
 }
-
-

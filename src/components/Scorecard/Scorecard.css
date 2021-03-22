@@ -1,5 +1,5 @@
 .scorecard-comp {
-    height: 90px;
+    height: 100px;
     border: 1px solid black;
     display: grid;
     grid-template-rows: 30px 1fr;
@@ -32,7 +32,8 @@
 .dots-section {
     grid-row: 1/2;
     grid-column: 3/6;
-    background-color: white
+    background-color: white;
+    font-size: 11px;
 }
 
 .dots {
