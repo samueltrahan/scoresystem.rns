@@ -2,7 +2,6 @@ import React from "react";
 import "./Fairways.css";
 
 export default function Fairways({ fairways }) {
-    
   return (
     <div>
       {fairways ? (

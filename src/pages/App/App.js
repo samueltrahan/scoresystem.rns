@@ -56,7 +56,6 @@ const App = () => {
 
   const checkYes = () => {
     setFairways(true)
-    console.log(fairways)
     history.push('/scorecard')
 }
 
@@ -67,7 +66,6 @@ const checkNo =() => {
 
   useEffect(() => {
     getScorecard()
-   
   }, [])
 
   return (
