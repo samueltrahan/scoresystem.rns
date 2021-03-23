@@ -10,6 +10,7 @@ import Tan from "../../assets/tandot.png";
 export default function RecordScore({handleScoring}) {
   const location = useLocation();
   const [counter, setCounter] = useState(location.par);
+  const [hole, setHole] = useState(location.hole)
 
 
   const incrementCount = () => {
@@ -59,7 +60,7 @@ export default function RecordScore({handleScoring}) {
       </div>
       <div className="submit-score">
         <button
-          onClick={(e) => handleScoring(e, counter)}
+          onClick={(e) => handleScoring(e, counter, hole)}
           className="submit-btn"
         >
           Record Score

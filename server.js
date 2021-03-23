@@ -8,6 +8,7 @@ require('dotenv').config();
 require('./config/database');
 
 const authRouter = require('./routes/auth');
+const roundsRouter = require('./routes/rounds');
 const cors = require('cors');
 
 app.use(express.static(path.join(__dirname, 'build')));
@@ -17,6 +18,7 @@ app.use(logger('dev'));
 app.use(express.json());
 
 app.use('/api/auth', authRouter);
+app.use('/api/rounds', roundsRouter);
 
 app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));

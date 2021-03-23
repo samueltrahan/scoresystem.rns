@@ -12,6 +12,6 @@ function postScore(req, res) {
     const score = req.body.score
     db.query(`INSERT INTO rounds(holes, courseId, score) VALUES (?,?,?)`,[hole, course, score], (err, results) => {
         if(err) return res.status(401).json({err: 'Did not make it to databse'})
-        return res.json(results)
+        return res.json('Success')
     })
 }

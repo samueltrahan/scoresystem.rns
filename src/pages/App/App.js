@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch, useHistory } from 'react-router-dom';
-
+import axios from 'axios';
+import {v4 as uuidv4} from 'uuid';
 import NavBar from "../../components/NavBar/NavBar";
 
 import LoginPage from '../LoginPage/LoginPage';
@@ -26,6 +27,7 @@ const App = () => {
   const [scoreCard, setScoreCard] =useState([])
   const [score, setScore] = useState();
   const [fairways, setFairways] = useState(false);
+  const [round, setRound] = useState(uuidv4());
   const history = useHistory();
 
   const handleLogout = () => {
@@ -48,9 +50,13 @@ const App = () => {
     })
   }
 
-  const handleScoring = (e, score) => {
-    e.preventDefault();
+  const handleScoring = (e, score, hole) => {
     setScore(score)
+    axios.post(`http://localhost:3001/api/rounds/create`,{
+      roundId: round,
+      holeIdx: hole,
+    })
+    
     history.push('/scorecard')
   }
 

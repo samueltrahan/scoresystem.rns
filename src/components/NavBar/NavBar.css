@@ -26,6 +26,7 @@
 .nav-wrap {
   background-color: gold;
   grid-column: 3/4;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
