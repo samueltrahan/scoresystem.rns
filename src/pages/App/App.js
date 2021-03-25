@@ -55,8 +55,8 @@ const App = () => {
     axios.post(`http://localhost:3001/api/rounds/create`,{
       roundId: round,
       holeIdx: hole,
+      score: score,
     })
-    
     history.push('/scorecard')
   }
 
