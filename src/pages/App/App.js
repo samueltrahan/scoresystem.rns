@@ -29,7 +29,10 @@ const App = () => {
   const [scoreCard, setScoreCard] =useState([])
   const [score, setScore] = useState();
   const [fairways, setFairways] = useState(false);
-  const [round, setRound] = useState(uuidv4());
+  const [roundId, setRoundId] = useState(uuidv4());
+  const [nickName, setNickName] = useState('');
+  const [date, setDate] = useState()
+  const [course, setCourse] = useState(1)
   const history = useHistory();
 
   const handleLogout = () => {
