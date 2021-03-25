@@ -9,7 +9,7 @@ export default function LandingPage() {
                 <img className="landing-img" src="/images/caddie-logo.png" alt=""></img>
             </div>
             <div className="scorecard">
-            <Link className="landing-link" to="scorecard">SCORECARD</Link>
+            <Link className="landing-link" to="/rounds">SCORECARD</Link>
             </div>
             <div className="leaderboard">
             <Link className="landing-link" to="scorecard">LEADERBOARD</Link>

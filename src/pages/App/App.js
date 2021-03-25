@@ -16,6 +16,8 @@ import RecordScore from '../RecordScore/RecordScore';
 import RecordFairways from '../RecordFairways/RecordFairways';
 import RecordGreens from '../RecordGreens/RecordGreens';
 import RecordPutts from '../RecordPutts/RecordPutts';
+import Rounds from '../Rounds/Rounds';
+import NewRound from '../Rounds/newRound';
 
 import userService from '../../services/userService';
 import {scoreCardDB} from '../../scorecardDB';
@@ -50,13 +52,13 @@ const App = () => {
     })
   }
 
-  const handleScoring = (e, score, hole) => {
+  const handleScoring = async (e, score, hole) => {
     setScore(score)
-    axios.post(`http://localhost:3001/api/rounds/create`,{
-      roundId: round,
+    await axios.post(`http://localhost:3001/api/rounds/create`,{
       holeIdx: hole,
       score: score,
     })
+    console.log('anything')
     history.push('/scorecard')
   }
 
@@ -147,6 +149,12 @@ const checkNo =() => {
         <RecordPutts />
         }>
         </Route>
+        <Route exact path="/rounds" render={() => 
+        <Rounds />
+        }></Route>
+        <Route exact path="/newround" render={() =>
+        <NewRound />
+        }></Route>
       </Switch>
         <Footer />
     </>
