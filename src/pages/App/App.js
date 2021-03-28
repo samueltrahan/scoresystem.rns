@@ -132,7 +132,7 @@ const checkNo =() => {
         <LandingPage />
         }>
         </Route>
-        <Route exact path="/scorecard" render={() => 
+        <Route exact path="/scorecard/:id" render={() => 
         <ScorecardPage user={user} score={score} fairways={fairways}/>
         }>
         </Route>
@@ -156,7 +156,7 @@ const checkNo =() => {
         <Rounds />
         }></Route>
         <Route exact path="/newround" render={() =>
-        <NewRound />
+        <NewRound user={user}/>
         }></Route>
       </Switch>
         <Footer />
