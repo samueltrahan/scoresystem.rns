@@ -9,9 +9,10 @@ function postScore(req, res) {
     console.log(req.body)
   const holeIdx = req.body.holeIdx;
   const score = req.body.score;
+  const roundId = req.body.roundId
   db.query(
-    "INSERT INTO rounds(holeIdx , score) VALUES (?,?)",
-    [holeIdx, score],
+    "INSERT INTO rounds(roundId, holeIdx , score) VALUES (?,?, ?)",
+    [roundId, holeIdx, score],
     (err, results) => {
       if (err) {
         console.log(err)
@@ -27,7 +28,9 @@ function startRound(req, res) {
   const nickName = req.body.nickName;
   const date_played = req.body.date;
   const userId = req.body.userId;
-  db.query("INSERT INTO rounds(roundId, nickName, date_played, userId) VALUES (?,?)", [roundId, nickName, date_played, userId], (err, results) => {
+  const holeIdx = req.body.holeIdx;
+  const score = req.body.score;
+  db.query("INSERT INTO rounds(roundId, nickName, date_played, holeIdx, score,  userId) VALUES (?,?,?,?,?,?)", [roundId, nickName, date_played, holeIdx, score, userId], (err, results) => {
     if(err) {
       console.log(err)
     } else {

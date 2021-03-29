@@ -52,14 +52,13 @@ const App = () => {
     })
   }
 
-  const handleScoring = async (e, score, hole) => {
-    setScore(score)
-    await axios.post(`http://localhost:3001/api/rounds/create`,{
+  const handleScoring = (e, score, hole) => {
+   axios.post(`http://localhost:3001/api/rounds/create`,{
       holeIdx: hole,
       score: score,
+      roundId: roundId
     })
-    console.log('anything')
-    history.push('/scorecard')
+    history.push(`/scorecard/${roundId}`)
   }
 
   const checkYes = () => {
@@ -133,8 +132,8 @@ const checkNo =() => {
         <ScorecardPage user={user} score={score} fairways={fairways}/>
         }>
         </Route>
-        <Route exact path="/score" render={() => 
-          <RecordScore scoreCard={scoreCard} handleScoring={handleScoring}/>
+        <Route exact path='/score' render={() => 
+          <RecordScore scoreCard={scoreCard} handleScoring={handleScoring} roundId={roundId}/>
         }>
         </Route>
         <Route exact path='/fairways' render={() =>
