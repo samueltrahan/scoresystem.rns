@@ -30,9 +30,6 @@ const App = () => {
   const [score, setScore] = useState();
   const [fairways, setFairways] = useState(false);
   const [roundId, setRoundId] = useState(uuidv4());
-  const [nickName, setNickName] = useState('');
-  const [date, setDate] = useState()
-  const [course, setCourse] = useState(1)
   const history = useHistory();
 
   const handleLogout = () => {
@@ -156,7 +153,7 @@ const checkNo =() => {
         <Rounds />
         }></Route>
         <Route exact path="/newround" render={() =>
-        <NewRound user={user}/>
+        <NewRound user={user} roundId={roundId}/>
         }></Route>
       </Switch>
         <Footer />

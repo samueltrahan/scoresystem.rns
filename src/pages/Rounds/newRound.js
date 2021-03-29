@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import "./newRound.css";
 import axios from 'axios';
-import { v4 as uuidv4 } from "uuid";
-import {useHistory, useParams} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
-export default function NewRound({user}) {
-  const [roundId, setRoundId] = useState(uuidv4());
+export default function NewRound({user, roundId}) {
+
   const [nickName, setNickName] = useState("");
   const [date, setDate] = useState();
   const [course, setCourse] = useState("The Farm D'Alie Golf Course");
   const history = useHistory();
-  const {id} = useParams();
+  
 
   
   const handleNickNameInput = (e) => {
