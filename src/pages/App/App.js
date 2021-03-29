@@ -30,6 +30,7 @@ const App = () => {
   const [score, setScore] = useState();
   const [fairways, setFairways] = useState(false);
   const [roundId, setRoundId] = useState(uuidv4());
+  const [hole, setHole] = useState()
   const [nickName, setNickName] = useState("");
   const [date, setDate] = useState();
   const [course, setCourse] = useState("The Farm D'Alie Golf Course");
@@ -56,6 +57,7 @@ const App = () => {
   }
 
   const handleScoring = (e, score, hole) => {
+    setHole(hole)
    axios.post(`http://localhost:3001/api/rounds/create`,{
       holeIdx: hole,
       score: score,
@@ -79,15 +81,19 @@ const App = () => {
     history.push(`/scorecard/${roundId}`)
   }
 
-  const checkYes = () => {
-    setFairways(true)
-    history.push('/scorecard')
-}
+  const getHoleScore = () => {
+   axios.get(`http://localhost:3001/api/rounds/score`, {
+      roundId: roundId,
+      hole: hole
+    })
+    .then(response => {
+      console.log(response)
+      setScore(response)
+    })
+    .catch((err) => console.log(err))
+  }
 
-const checkNo =() => {
-    setFairways(false)
-    history.push('/scorecard')
-}
+
 
   useEffect(() => {
     getScorecard()
@@ -147,7 +153,7 @@ const checkNo =() => {
         }>
         </Route>
         <Route exact path="/scorecard/:id" render={() => 
-        <ScorecardPage user={user} score={score} fairways={fairways}/>
+        <ScorecardPage user={user} score={score} fairways={fairways} getHoleScore={getHoleScore}/>
         }>
         </Route>
         <Route exact path='/score' render={() => 
@@ -155,7 +161,7 @@ const checkNo =() => {
         }>
         </Route>
         <Route exact path='/fairways' render={() =>
-          <RecordFairways checkYes={checkYes} checkNo={checkNo}/>
+          <RecordFairways />
         }>
         </Route>
         <Route exact path="/greens" render={() => 

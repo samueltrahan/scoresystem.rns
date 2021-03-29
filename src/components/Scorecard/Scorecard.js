@@ -9,9 +9,7 @@ import Tan from "../../assets/tandot.png";
 import Score from './Score';
 import Fairways from './Fairways';
 
-export default function Scorecard({ scorecard, score, fairways }) {
-  const [greens, setGreens] = useState(false);
-  const [putts, setPutts] = useState('')
+export default function Scorecard({ scorecard, score, fairways, getHoleScore }) {
   const history = useHistory();
 
  
@@ -45,7 +43,7 @@ export default function Scorecard({ scorecard, score, fairways }) {
           className="score-player"
         >
           Score
-          <Score scorecard={scorecard} score={score}/>
+          <Score scorecard={scorecard} score={score} getHoleScore={getHoleScore}/>
         </div>
       </Link>
       <div

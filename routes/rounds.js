@@ -4,6 +4,7 @@ const roundsCtrl = require('../controllers/rounds');
 
 router.post('/newround', roundsCtrl.startRound);
 router.post('/create', roundsCtrl.postScore);
+router.get('/score', roundsCtrl.getHoleScore);
 
 router.use(require('../config/auth'));
 

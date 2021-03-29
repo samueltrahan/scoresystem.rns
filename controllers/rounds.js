@@ -3,10 +3,10 @@ const db = require("../config/database");
 module.exports = {
   postScore,
   startRound,
+  getHoleScore,
 };
 
 function postScore(req, res) {
-    console.log(req.body)
   const holeIdx = req.body.holeIdx;
   const score = req.body.score;
   const roundId = req.body.roundId;
@@ -26,7 +26,6 @@ function postScore(req, res) {
 }
 
 function startRound(req, res) {
-  console.log(req.body)
   const roundId = req.body.round;
   const nickName = req.body.nickName;
   const date_played = req.body.date;
@@ -39,6 +38,17 @@ function startRound(req, res) {
     } else {
       console.log("Success");
     }
+  })
+}
+
+function getHoleScore(req, res) {
+  const roundId = req.body.roundId;
+  const holeIdx = req.body.hole;
+  db.query("SELECT score FROM rounds WHERE holeIdx = (?) AND roundId = (?)", [holeIdx, roundId], (err, results) => {
+    if(err) {
+      console.log(err)
+    } else 
+    console.log("success");
   })
 }
 
