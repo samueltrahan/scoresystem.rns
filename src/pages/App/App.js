@@ -30,6 +30,9 @@ const App = () => {
   const [score, setScore] = useState();
   const [fairways, setFairways] = useState(false);
   const [roundId, setRoundId] = useState(uuidv4());
+  const [nickName, setNickName] = useState("");
+  const [date, setDate] = useState();
+  const [course, setCourse] = useState("The Farm D'Alie Golf Course");
   const history = useHistory();
 
   const handleLogout = () => {
@@ -56,7 +59,22 @@ const App = () => {
    axios.post(`http://localhost:3001/api/rounds/create`,{
       holeIdx: hole,
       score: score,
-      roundId: roundId
+      roundId: roundId,
+      nickName: nickName,
+      date: date,
+      user: user.id
+    })
+    history.push(`/scorecard/${roundId}`)
+  }
+
+  function startNewRound() {
+    axios.post('http://localhost:3001/api/rounds/newround', {
+      round: roundId,
+      nickName: nickName,
+      date: date,
+      userId: user.id,
+      holeIdx: 0,
+      score: 0,
     })
     history.push(`/scorecard/${roundId}`)
   }
@@ -152,7 +170,7 @@ const checkNo =() => {
         <Rounds />
         }></Route>
         <Route exact path="/newround" render={() =>
-        <NewRound user={user} roundId={roundId}/>
+        <NewRound user={user} roundId={roundId} startNewRound={startNewRound} setNickName={setNickName} setDate={setDate} />
         }></Route>
       </Switch>
         <Footer />
