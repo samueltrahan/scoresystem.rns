@@ -27,13 +27,15 @@ import "./App.css";
 const App = () => {
   const [user, setUser] = useState('');
   const [scoreCard, setScoreCard] =useState([])
-  const [score, setScore] = useState();
+  const [score, setScore] = useState([]);
   const [fairways, setFairways] = useState(false);
   const [roundId, setRoundId] = useState(uuidv4());
   const [hole, setHole] = useState()
   const [nickName, setNickName] = useState("");
   const [date, setDate] = useState();
-  const [course, setCourse] = useState("The Farm D'Alie Golf Course");
+  const [currentRoundId, setCurrentRoundId] = useState();
+  const [currentHoleIdx, setCurrentHoleIdx] = useState();
+  const [holeInfo, setHoleInfo] = useState([]);
   const history = useHistory();
 
   const handleLogout = () => {
@@ -83,21 +85,28 @@ const App = () => {
 
   const getHoleScore = () => {
    axios.get(`http://localhost:3001/api/rounds/score`, {
-      roundId: roundId,
-      hole: hole
-    })
+     hole: hole,
+     roundId: roundId
+   })
     .then(response => {
-      console.log(response)
-      setScore(response)
+      setHoleInfo(response.data)
     })
     .catch((err) => console.log(err))
+  }
+
+  const getCurrentHoleInfo = () => {
+    holeInfo.map(info => {
+      setCurrentHoleIdx(info.holeIdx)
+      setScore(info.score);
+    }) 
   }
 
 
 
   useEffect(() => {
     getScorecard()
-  }, [])
+    getCurrentHoleInfo();
+  })
 
   return (
     <>
@@ -153,7 +162,7 @@ const App = () => {
         }>
         </Route>
         <Route exact path="/scorecard/:id" render={() => 
-        <ScorecardPage user={user} score={score} fairways={fairways} getHoleScore={getHoleScore}/>
+        <ScorecardPage user={user}  fairways={fairways} getHoleScore={getHoleScore}/>
         }>
         </Route>
         <Route exact path='/score' render={() => 

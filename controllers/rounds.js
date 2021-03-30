@@ -42,13 +42,12 @@ function startRound(req, res) {
 }
 
 function getHoleScore(req, res) {
-  const roundId = req.body.roundId;
-  const holeIdx = req.body.hole;
-  db.query("SELECT score FROM rounds WHERE holeIdx = (?) AND roundId = (?)", [holeIdx, roundId], (err, results) => {
+  db.query("SELECT score, holeIdx, roundId FROM rounds", (err, results) => {
     if(err) {
       console.log(err)
     } else 
     console.log("success");
+    res.send(results)
   })
 }
 
