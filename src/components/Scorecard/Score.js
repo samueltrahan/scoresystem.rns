@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./Score.css";
+import axios from 'axios';
 
-export default function Score({ score, scorecard, getHoleScore }) {
+export default function Score({score,  scorecard }) {
   const [par, setPar] = useState();
+  const [holeInfo, setHoleInfo] = useState([]);
+  const [currentScore, setCurrentScore] = useState()
+  const [currentHoleIdx, setCurrentHoleIdx] = useState()
   const parScore = {
     par: scorecard.par,
     birdie: scorecard.par - 1,
@@ -33,8 +37,26 @@ export default function Score({ score, scorecard, getHoleScore }) {
     </>;
   };
 
+  const getHoleScore = async () => {
+    await axios
+      .get(`http://localhost:3001/api/rounds/score`)
+      .then((response) => {
+        console.log(response.data)
+        setHoleInfo(response.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const getCurrentHoleInfo = async () => {
+    await holeInfo.map((info) => {
+      setCurrentScore(info.score);
+      
+    });
+  };
+
   useEffect(() => {
     getHoleScore()
+    getCurrentHoleInfo()
     setStyling();
   }, [score]);
 

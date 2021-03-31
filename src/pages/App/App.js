@@ -25,13 +25,11 @@ import "./App.css";
 
 const App = () => {
   const [user, setUser] = useState("");
-  const [score, setScore] = useState([]);
+  
   const [roundId, setRoundId] = useState(uuidv4());
   const [hole, setHole] = useState();
   const [nickName, setNickName] = useState("");
   const [date, setDate] = useState();
-  const [currentHoleIdx, setCurrentHoleIdx] = useState();
-  const [holeInfo, setHoleInfo] = useState([]);
   const history = useHistory();
 
   const handleLogout = () => {
@@ -74,22 +72,6 @@ const App = () => {
     history.push(`/scorecard/${roundId}`);
   }
 
-  const getHoleScore = async () => {
-    await axios
-      .get(`http://localhost:3001/api/rounds/score`)
-      .then((response) => {
-        setHoleInfo(response.data);
-      })
-      .catch((err) => console.log(err));
-      await getCurrentHoleInfo();
-  };
-
-  const getCurrentHoleInfo = async () => {
-    await holeInfo.map((info) => {
-      setCurrentHoleIdx(info.holeIdx);
-      setScore(info.score);
-    });
-  };
 
   
 
@@ -161,7 +143,7 @@ const App = () => {
         <Route
           exact
           path="/scorecard/:id"
-          render={() => <ScorecardPage user={user} score={score} getHoleScore={getHoleScore} />}
+          render={() => <ScorecardPage user={user} />}
         ></Route>
         <Route
           exact

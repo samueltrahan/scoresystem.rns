@@ -42,7 +42,7 @@ function startRound(req, res) {
 }
 
 function getHoleScore(req, res) {
-  db.query("SELECT score, holeIdx, roundId FROM rounds", (err, results) => {
+  db.query("SELECT * FROM rounds ORDER BY score DESC LIMIT 1", (err, results) => {
     if(err) {
       console.log(err)
     } else 

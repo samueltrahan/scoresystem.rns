@@ -5,14 +5,14 @@ import Scorecard from "../../components/Scorecard/Scorecard";
 
 
 
-export default function ScarecardPage({ user, score, fairways, getHoleScore }) {
+export default function ScarecardPage({ user }) {
  
 
   return (
     <div>
   
       {scoreCardDB.map((scorecard) => (
-        <Scorecard getHoleScore={getHoleScore} scorecard={scorecard} score={score} fairways={fairways}/>
+        <Scorecard  scorecard={scorecard}/>
       ))}
     </div>
   );
