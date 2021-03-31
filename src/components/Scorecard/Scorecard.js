@@ -35,11 +35,6 @@ export default function Scorecard({ scorecard, score, fairways, getHoleScore }) 
         className="score-player"
       >
         <div
-          onKeyPress={(event) => {
-            if (event.key === "Enter") {
-              history.push("/score");
-            }
-          }}
           className="score-player"
         >
           Score

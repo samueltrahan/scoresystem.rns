@@ -20,7 +20,7 @@ import Rounds from '../Rounds/Rounds';
 import NewRound from '../Rounds/newRound';
 
 import userService from '../../services/userService';
-import {scoreCardDB} from '../../scorecardDB';
+
 
 import "./App.css";
 
@@ -28,7 +28,6 @@ const App = () => {
   const [user, setUser] = useState('');
   const [scoreCard, setScoreCard] =useState([])
   const [score, setScore] = useState([]);
-  const [fairways, setFairways] = useState(false);
   const [roundId, setRoundId] = useState(uuidv4());
   const [hole, setHole] = useState()
   const [nickName, setNickName] = useState("");
@@ -52,11 +51,6 @@ const App = () => {
     return 'green-text'
   }
 
-  const getScorecard = () => {
-    scoreCardDB.map((sc) => {
-      setScoreCard([...scoreCard, sc ])
-    })
-  }
 
   const handleScoring = (e, score, hole) => {
     setHole(hole)
@@ -83,30 +77,27 @@ const App = () => {
     history.push(`/scorecard/${roundId}`)
   }
 
-  const getHoleScore = () => {
-   axios.get(`http://localhost:3001/api/rounds/score`, {
-     hole: hole,
-     roundId: roundId
-   })
+  const getHoleScore = async () => {
+   await axios.get(`http://localhost:3001/api/rounds/score`)
     .then(response => {
       setHoleInfo(response.data)
     })
     .catch((err) => console.log(err))
+
   }
 
-  const getCurrentHoleInfo = () => {
-    holeInfo.map(info => {
+
+  const getCurrentHoleInfo = async () => {
+    await holeInfo.map(info => {
       setCurrentHoleIdx(info.holeIdx)
-      setScore(info.score);
+      setScore([...score, info]);
+      console.log(currentHoleIdx)
+      console.log(score)
     }) 
   }
 
 
 
-  useEffect(() => {
-    getScorecard()
-    getCurrentHoleInfo();
-  })
 
   return (
     <>
@@ -162,11 +153,11 @@ const App = () => {
         }>
         </Route>
         <Route exact path="/scorecard/:id" render={() => 
-        <ScorecardPage user={user}  fairways={fairways} getHoleScore={getHoleScore}/>
+        <ScorecardPage user={user} />
         }>
         </Route>
         <Route exact path='/score' render={() => 
-          <RecordScore scoreCard={scoreCard} handleScoring={handleScoring} roundId={roundId}/>
+          <RecordScore  scoreCard={scoreCard} handleScoring={handleScoring} roundId={roundId}/>
         }>
         </Route>
         <Route exact path='/fairways' render={() =>

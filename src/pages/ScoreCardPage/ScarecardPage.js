@@ -3,7 +3,7 @@ import "./ScorecardPage.css";
 import { scoreCardDB } from "../../scorecardDB";
 import Scorecard from "../../components/Scorecard/Scorecard";
 
-const farmId = 1;
+
 
 export default function ScarecardPage({ user, score, fairways, getHoleScore }) {
  

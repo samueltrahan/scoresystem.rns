@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Score.css";
 
-export default function Score({ score, scorecard, getHoleScore }) {
+export default function Score({ score, scorecard }) {
   const [par, setPar] = useState();
   const parScore = {
     par: scorecard.par,
@@ -34,7 +34,6 @@ export default function Score({ score, scorecard, getHoleScore }) {
   };
 
   useEffect(() => {
-    getHoleScore()
     setStyling();
   }, [score]);
 
