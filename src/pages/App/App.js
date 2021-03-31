@@ -29,6 +29,7 @@ const App = () => {
   const [roundId, setRoundId] = useState(uuidv4());
   const [hole, setHole] = useState();
   const [nickName, setNickName] = useState("");
+  const [score, setScore] = useState()
   const [date, setDate] = useState();
   const history = useHistory();
 
@@ -48,6 +49,7 @@ const App = () => {
 
   const handleScoring = async (e, score, hole) => {
     setHole(hole);
+    setScore(score)
     axios.post(`http://localhost:3001/api/rounds/create`, {
       holeIdx: hole,
       score: score,
@@ -55,7 +57,7 @@ const App = () => {
       nickName: nickName,
       date: date,
       user: user.id,
-    });
+    })
     history.push(`/scorecard/${roundId}`);
 
   };
@@ -143,7 +145,7 @@ const App = () => {
         <Route
           exact
           path="/scorecard/:id"
-          render={() => <ScorecardPage user={user} />}
+          render={() => <ScorecardPage user={user} roundId={roundId} hole={hole} score={score} />}
         ></Route>
         <Route
           exact

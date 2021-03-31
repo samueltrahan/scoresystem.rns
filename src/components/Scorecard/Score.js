@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import "./Score.css";
 import axios from 'axios';
 
-export default function Score({score,  scorecard }) {
+export default function Score({ scorecard, score, roundId, hole }) {
   const [par, setPar] = useState();
   const [holeInfo, setHoleInfo] = useState([]);
   const [currentScore, setCurrentScore] = useState()
-  const [currentHoleIdx, setCurrentHoleIdx] = useState()
+  const [currentHoleIdx, setCurrentHoleIdx] = useState();
+  const [currentRoundId, setCurrentRoundId] = useState()
   const parScore = {
     par: scorecard.par,
     birdie: scorecard.par - 1,
@@ -17,31 +18,12 @@ export default function Score({score,  scorecard }) {
     tripleBogey: scorecard.par + 3,
   };
 
-  const setStyling = () => {
-    <>
-      {score === parScore.par
-        ? setPar("par")
-        : score === parScore.birdie
-        ? setPar("birdie")
-        : score === parScore.bogey
-        ? setPar("bogey")
-        : score === parScore.eagle
-        ? setPar("eagle")
-        : score === parScore.doubleBogey
-        ? setPar("double-bogey")
-        : score === parScore.tripleBogey
-        ? setPar("triple-bogey")
-        : score === parScore.albatross
-        ? setPar("albatross")
-        : ""}
-    </>;
-  };
+  
 
   const getHoleScore = async () => {
     await axios
       .get(`http://localhost:3001/api/rounds/score`)
       .then((response) => {
-        console.log(response.data)
         setHoleInfo(response.data);
       })
       .catch((err) => console.log(err));
@@ -49,18 +31,49 @@ export default function Score({score,  scorecard }) {
 
   const getCurrentHoleInfo = async () => {
     await holeInfo.map((info) => {
+      console.log(info.score)
+      console.log(info.roundId)
+      console.log(info.holeIdx)
       setCurrentScore(info.score);
-      
+      setCurrentHoleIdx(info.holeIdx);
+      setCurrentRoundId(info.roundId);
     });
+  };
+
+  const setStyling = () => {
+    <>
+      {currentScore === parScore.par
+        ? setPar("par")
+        : currentScore === parScore.birdie
+        ? setPar("birdie")
+        : currentScore === parScore.bogey
+        ? setPar("bogey")
+        : currentScore === parScore.eagle
+        ? setPar("eagle")
+        : currentScore === parScore.doubleBogey
+        ? setPar("double-bogey")
+        : currentScore === parScore.tripleBogey
+        ? setPar("triple-bogey")
+        : currentScore === parScore.albatross
+        ? setPar("albatross")
+        : ""}
+    </>;
   };
 
   useEffect(() => {
     getHoleScore()
     getCurrentHoleInfo()
     setStyling();
-  }, [score]);
+  }, [currentScore]);
 
   
 
-  return <div className={par}>{score}</div>;
+  return (
+    roundId = currentRoundId ? (
+  <div className={par}>
+    {currentScore}
+    </div>
+    ) :
+    ''
+  )
 }

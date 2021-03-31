@@ -21,6 +21,7 @@ function postScore(req, res) {
         console.log(err)
       } else
       console.log("Success");
+      res.send(results)
     }
   );
 }
@@ -42,12 +43,11 @@ function startRound(req, res) {
 }
 
 function getHoleScore(req, res) {
-  db.query("SELECT * FROM rounds ORDER BY score DESC LIMIT 1", (err, results) => {
+  db.query("SELECT score, roundId FROM rounds", (err, results) => {
     if(err) {
       console.log(err)
     } else 
     console.log("success");
-    res.send(results)
   })
 }
 

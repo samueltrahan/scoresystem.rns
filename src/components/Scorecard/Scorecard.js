@@ -9,7 +9,7 @@ import Tan from "../../assets/tandot.png";
 import Score from './Score';
 import Fairways from './Fairways';
 
-export default function Scorecard({ scorecard, score, fairways, getHoleScore }) {
+export default function Scorecard({ scorecard, score, roundId, hole }) {
   const history = useHistory();
 
  
@@ -38,7 +38,7 @@ export default function Scorecard({ scorecard, score, fairways, getHoleScore }) 
           className="score-player"
         >
           Score
-          <Score scorecard={scorecard} score={score} getHoleScore={getHoleScore}/>
+          <Score scorecard={scorecard} score={score} roundId={roundId} hole={hole} />
         </div>
       </Link>
       <div
@@ -51,7 +51,7 @@ export default function Scorecard({ scorecard, score, fairways, getHoleScore }) 
         className="fairways-player"
       >
         Fairways
-        <Fairways fairways={fairways}/>
+        <Fairways />
       </div>
       <div
         onKeyPress={(event) => {
