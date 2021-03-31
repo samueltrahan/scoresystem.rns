@@ -12,7 +12,7 @@ export default function ScarecardPage({ user, score, fairways, getHoleScore }) {
     <div>
   
       {scoreCardDB.map((scorecard) => (
-        <Scorecard scorecard={scorecard} score={score} fairways={fairways} getHoleScore={getHoleScore}/>
+        <Scorecard getHoleScore={getHoleScore} scorecard={scorecard} score={score} fairways={fairways}/>
       ))}
     </div>
   );
