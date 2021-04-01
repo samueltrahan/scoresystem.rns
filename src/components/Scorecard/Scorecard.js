@@ -7,7 +7,7 @@ import Silver from "../../assets/silverdot.png";
 import Green from "../../assets/greendot.png";
 import Tan from "../../assets/tandot.png";
 import Score from './Score';
-import Fairways from './Fairways';
+
 
 export default function Scorecard({ scorecard, score, roundId, hole }) {
   const history = useHistory();
@@ -41,40 +41,6 @@ export default function Scorecard({ scorecard, score, roundId, hole }) {
           <Score scorecard={scorecard} score={score} roundId={roundId} hole={hole} />
         </div>
       </Link>
-      <div
-        onKeyPress={(event) => {
-          if (event.key === "Enter") {
-            history.push("/fairways");
-          }
-        }}
-        onClick={() => history.push("/fairways")}
-        className="fairways-player"
-      >
-        Fairways
-        <Fairways />
-      </div>
-      <div
-        onKeyPress={(event) => {
-          if (event.key === "Enter") {
-            history.push("/greens");
-          }
-        }}
-        onClick={() => history.push("/greens")}
-        className="greens-player"
-      >
-        Greens
-      </div>
-      <div
-        onKeyPress={(event) => {
-          if (event.key === "Enter") {
-            history.push("/putts");
-          }
-        }}
-        onClick={() => history.push("/putts")}
-        className="putts-player"
-      >
-        Putts
-      </div>
     </div>
   );
 }

@@ -48,6 +48,7 @@ function getHoleScore(req, res) {
       console.log(err)
     } else 
     console.log("success");
+    res.send(results)
   })
 }
 

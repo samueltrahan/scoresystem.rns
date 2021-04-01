@@ -13,9 +13,6 @@ import LandingPage from "../LandingPage/LandingPage";
 import ScorecardPage from "../ScoreCardPage/ScarecardPage";
 import Footer from "../../components/Footer/Footer";
 import RecordScore from "../RecordScore/RecordScore";
-import RecordFairways from "../RecordFairways/RecordFairways";
-import RecordGreens from "../RecordGreens/RecordGreens";
-import RecordPutts from "../RecordPutts/RecordPutts";
 import Rounds from "../Rounds/Rounds";
 import NewRound from "../Rounds/newRound";
 
@@ -29,7 +26,7 @@ const App = () => {
   const [roundId, setRoundId] = useState(uuidv4());
   const [hole, setHole] = useState();
   const [nickName, setNickName] = useState("");
-  const [score, setScore] = useState()
+  const [score, setScore] = useState([])
   const [date, setDate] = useState();
   const history = useHistory();
 
@@ -49,7 +46,7 @@ const App = () => {
 
   const handleScoring = async (e, score, hole) => {
     setHole(hole);
-    setScore(score)
+    setScore([...score, score])
     axios.post(`http://localhost:3001/api/rounds/create`, {
       holeIdx: hole,
       score: score,
@@ -75,7 +72,7 @@ const App = () => {
   }
 
 
-  
+  console.log(score)
 
   // useEffect(() => {
   //   getCurrentHoleInfo()
@@ -145,7 +142,7 @@ const App = () => {
         <Route
           exact
           path="/scorecard/:id"
-          render={() => <ScorecardPage user={user} roundId={roundId} hole={hole} score={score} />}
+          render={() => <ScorecardPage user={user} score={score} roundId={roundId} hole={hole} score={score} />}
         ></Route>
         <Route
           exact
@@ -157,9 +154,6 @@ const App = () => {
             />
           )}
         ></Route>
-        <Route exact path="/fairways" render={() => <RecordFairways />}></Route>
-        <Route exact path="/greens" render={() => <RecordGreens />}></Route>
-        <Route exact path="/putts" render={() => <RecordPutts />}></Route>
         <Route exact path="/rounds" render={() => <Rounds />}></Route>
         <Route
           exact
