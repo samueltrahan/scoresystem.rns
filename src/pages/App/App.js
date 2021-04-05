@@ -46,7 +46,6 @@ const App = () => {
 
   const handleScoring = async (e, score, hole) => {
     setHole(hole);
-    setScore([...score, score])
     axios.post(`http://localhost:3001/api/rounds/create`, {
       holeIdx: hole,
       score: score,

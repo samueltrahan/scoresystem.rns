@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useHistory, Link } from "react-router-dom";
+import React from "react";
+import {  Link } from "react-router-dom";
 import "./Scorecard.css";
 import BlackDot from "../../assets/blackdot.png";
 import YellowDot from "../../assets/yellowdot.png";
@@ -10,7 +10,6 @@ import Score from './Score';
 
 
 export default function Scorecard({ scorecard, score, roundId, hole }) {
-  const history = useHistory();
 
  
 

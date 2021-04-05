@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Score.css";
-import axios from "axios";
+import axios from 'axios';
+
 
 export default function Score({ scorecard, score, roundId, hole }) {
   const [par, setPar] = useState();
@@ -17,6 +18,23 @@ export default function Score({ scorecard, score, roundId, hole }) {
     doubleBogey: scorecard.par + 2,
     tripleBogey: scorecard.par + 3,
   };
+
+  const getHoleScore = async () => {
+    await axios.get(`http://localhost:3001/api/rounds/score`, {
+      roundId: roundId
+    })
+    .then(response => {
+      setHoleInfo(response.data)
+    })
+    overTheHole()
+  }
+
+  const overTheHole = async () => {
+    await holeInfo.map(holes => {
+      setCurrentRoundId(hole.roundId)
+      console.log=(currentRoundId)
+    })
+  }
 
  
   const setStyling = () => {
@@ -40,7 +58,7 @@ export default function Score({ scorecard, score, roundId, hole }) {
   };
 
   useEffect(() => {
-   
+   getHoleScore();
     setStyling();
   }, [currentScore]);
 
