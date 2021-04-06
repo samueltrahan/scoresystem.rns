@@ -42,12 +42,12 @@ function startRound(req, res) {
 }
 
 function getHoleScore(req, res) {
-  db.query("SELECT * FROM rounds", (err, results) => {
+  db.query(`SELECT * FROM rounds WHERE roundId = '${req.params.roundid}'`, (err, results) => {
     if(err) {
       console.log(err)
     } else 
     console.log("success");
-    res.send(results)
+    res.json(results)
   })
 }
 

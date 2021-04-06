@@ -28,6 +28,7 @@ const App = () => {
   const [nickName, setNickName] = useState("");
   const [score, setScore] = useState([])
   const [date, setDate] = useState();
+  const [scorecardInfo, setScorecardInfo] = useState()
   const history = useHistory();
 
   const handleLogout = () => {
@@ -70,12 +71,18 @@ const App = () => {
     history.push(`/scorecard/${roundId}`);
   }
 
+  function getScorecardInfo() {
+    axios.get(`http://localhost:3001/api/rounds/${roundId}`)
+    .then(response => {
+      console.log(response.data)
+      setScorecardInfo(response.data)
+    })
+  }
 
-  console.log(score)
-
-  // useEffect(() => {
-  //   getCurrentHoleInfo()
-  // }, [])
+  useEffect(() => {
+    getScorecardInfo()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [roundId])
 
   return (
     <>
@@ -141,7 +148,7 @@ const App = () => {
         <Route
           exact
           path="/scorecard/:id"
-          render={() => <ScorecardPage user={user} score={score} roundId={roundId} hole={hole} score={score} />}
+          render={() => <ScorecardPage user={user} score={score} roundId={roundId} hole={hole} />}
         ></Route>
         <Route
           exact
