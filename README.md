@@ -1,21 +1,21 @@
-# JWT-Auth-Template-With-MySQL
+# Caddie Scoring
 
 ##
 
 ## This template contains a basic navbar that will display the name of the logged in user.
 
-### Instructions:
+### How to contribute:
 
 #### 1. Clone this repository to your local machine.
 
 ```
-git clone https://github.com/CodingSalmon/jwt-auth-template-with-mysql.git
+git clone https://github.com/samueltrahan/scoresystem.rns.git
 ```
 
 #### 2. Navigate into the repository and install node modules.
 
 ```
-cd jwt-auth-template-with-mysql
+cd scoresystem.rns
 npm i
 ```
 
@@ -33,3 +33,14 @@ RESET_PASSWORD_KEY=<any string>
 GOOGLE_APP_EMAIL=<google account email>
 GOOGLE_APP_PW=<google account password>
 ```
+
+# Caddie
+
+## Things that need to get done
+
+- [ ] Clean up the code on Front end. (Way too much clutter and confusion)
+- [ ] Decouple the front and back end.
+- [ ] Integrate greens hit, fairways hit, and putts made.
+- [ ] Get pictures of the course to add to the record score page.
+- [ ] Currently can start a new round and can record a score, but need to figure out how to get score for individual holes back.
+- [ ] Leaderboard 
