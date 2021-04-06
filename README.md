@@ -43,3 +43,4 @@ GOOGLE_APP_PW=<google account password>
 - [ ] Integrate greens hit, fairways hit, and putts made.
 - [ ] Get pictures of the course to add to the record score page.
 - [ ] Currently can start a new round and can record a score, but need to figure out how to get score for individual holes back.
+- [ ] Leaderboard 
