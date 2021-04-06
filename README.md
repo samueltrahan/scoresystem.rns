@@ -40,4 +40,6 @@ GOOGLE_APP_PW=<google account password>
 
 - [ ] Clean up the code on Front end. (Way too much clutter and confusion)
 - [ ] Decouple the front and back end.
-- [ ] Set up the back end so that saving scores can be done more efficiently.
+- [ ] Integrate greens hit, fairways hit, and putts made.
+- [ ] Get pictures of the course to add to the record score page.
+- [ ] Currently can start a new round and can record a score, but need to figure out how to get score for individual holes back.
