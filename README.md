@@ -4,7 +4,7 @@
 
 ## This template contains a basic navbar that will display the name of the logged in user.
 
-### Instructions:
+### How to contribute:
 
 #### 1. Clone this repository to your local machine.
 
@@ -33,3 +33,11 @@ RESET_PASSWORD_KEY=<any string>
 GOOGLE_APP_EMAIL=<google account email>
 GOOGLE_APP_PW=<google account password>
 ```
+
+# Caddie
+
+## Things that need to get done
+
+- [ ] Clean up the code on Front end. (Way too much clutter and confusion)
+- [ ] Decouple the front and back end.
+- [ ] Set up the back end so that saving scores can be done more efficiently.
