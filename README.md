@@ -9,13 +9,13 @@
 #### 1. Clone this repository to your local machine.
 
 ```
-git clone https://github.com/CodingSalmon/jwt-auth-template-with-mysql.git
+git clone https://github.com/samueltrahan/scoresystem.rns.git
 ```
 
 #### 2. Navigate into the repository and install node modules.
 
 ```
-cd jwt-auth-template-with-mysql
+cd scoresystem.rns
 npm i
 ```
 
