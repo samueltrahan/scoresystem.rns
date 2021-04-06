@@ -1,4 +1,4 @@
-# JWT-Auth-Template-With-MySQL
+# Caddie Scoring
 
 ##
 
