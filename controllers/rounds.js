@@ -13,9 +13,10 @@ function postScore(req, res) {
   const nickName = req.body.nickName;
   const date_played = req.body.date;
   const userId = req.body.userId;
+  const completed = req.body.completed
   db.query(
-    "INSERT INTO rounds(roundId, holeIdx , score, nickName, date_played, userId) VALUES (?,?, ?, ?, ?, ?)",
-    [roundId, holeIdx, score, nickName, date_played, userId],
+    "INSERT INTO rounds(roundId, holeIdx , score, nickName, date_played, userId, completed) VALUES (?,?, ?, ?, ?, ?, ?)",
+    [roundId, holeIdx, score, nickName, date_played, userId, completed],
     (err, results) => {
       if (err) {
         console.log(err)
@@ -32,7 +33,8 @@ function startRound(req, res) {
   const userId = req.body.userId;
   const holeIdx = req.body.holeIdx;
   const score = req.body.score;
-  db.query("INSERT INTO rounds(roundId, nickName, date_played, holeIdx, score,  userId) VALUES (?,?,?,?,?,?)", [roundId, nickName, date_played, holeIdx, score, userId], (err, results) => {
+  const completed = req.body.completed
+  db.query("INSERT INTO rounds(roundId, nickName, date_played, holeIdx, score, completed,  userId) VALUES (?,?,?,?,?,?, ?)", [roundId, nickName, date_played, holeIdx, score, completed, userId], (err, results) => {
     if(err) {
       console.log(err)
     } else {

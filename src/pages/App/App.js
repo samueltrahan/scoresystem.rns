@@ -30,6 +30,7 @@ const App = () => {
   const [date, setDate] = useState();
   const [scorecardInfo, setScorecardInfo] = useState()
   const history = useHistory();
+ 
 
   const handleLogout = () => {
     userService.logout();
@@ -54,6 +55,7 @@ const App = () => {
       nickName: nickName,
       date: date,
       user: user.id,
+      completed: false
     })
     history.push(`/scorecard/${roundId}`);
 
@@ -67,6 +69,7 @@ const App = () => {
       userId: user.id,
       holeIdx: 0,
       score: 0,
+      completed: false,
     });
     history.push(`/scorecard/${roundId}`);
   }
