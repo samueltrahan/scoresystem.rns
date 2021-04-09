@@ -13,7 +13,6 @@ import LandingPage from "../LandingPage/LandingPage";
 import ScorecardPage from "../ScoreCardPage/ScarecardPage";
 import Footer from "../../components/Footer/Footer";
 import RecordScore from "../RecordScore/RecordScore";
-import Rounds from "../Rounds/Rounds";
 import NewRound from "../Rounds/newRound";
 
 import userService from "../../services/userService";
@@ -22,15 +21,15 @@ import "./App.css";
 
 const App = () => {
   const [user, setUser] = useState("");
-  
+
   const [roundId, setRoundId] = useState(uuidv4());
   const [hole, setHole] = useState();
   const [nickName, setNickName] = useState("");
-  const [score, setScore] = useState([])
+  const [score, setScore] = useState([]);
   const [date, setDate] = useState();
-  const [scorecardInfo, setScorecardInfo] = useState()
+  const [scorecardInfo, setScorecardInfo] = useState();
   const history = useHistory();
- 
+  const [completed, setCompleted] = useState();
 
   const handleLogout = () => {
     userService.logout();
@@ -55,10 +54,9 @@ const App = () => {
       nickName: nickName,
       date: date,
       user: user.id,
-      completed: false
-    })
+      completed: false,
+    });
     history.push(`/scorecard/${roundId}`);
-
   };
 
   function startNewRound() {
@@ -75,17 +73,32 @@ const App = () => {
   }
 
   function getScorecardInfo() {
-    axios.get(`http://localhost:3001/api/rounds/${roundId}`)
-    .then(response => {
-      console.log(response.data)
-      setScorecardInfo(response.data)
-    })
+    axios
+      .get(`http://localhost:3001/api/rounds/${roundId}`)
+      .then((response) => {
+        console.log(response.data);
+        setScorecardInfo(response.data);
+      });
+  }
+
+  function getCurrentRound() {
+    axios
+      .get(`http://localhost:3001/api/rounds/completed`)
+      .then((response) => {
+        if(!response) {
+          setScorecardInfo(response.data)
+          setCompleted(false)
+        } else {
+          setCompleted(true)
+        }
+      });
   }
 
   useEffect(() => {
-    getScorecardInfo()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [roundId])
+ 
+    getCurrentRound()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
@@ -147,23 +160,36 @@ const App = () => {
             </>
           )}
         ></Route>
-        <Route exact path="/" render={() => <LandingPage />}></Route>
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <LandingPage
+              completed={completed}
+              getCurrentRound={getCurrentRound}
+              roundId={roundId}
+            />
+          )}
+        ></Route>
         <Route
           exact
           path="/scorecard/:id"
-          render={() => <ScorecardPage user={user} score={score} roundId={roundId} hole={hole} />}
+          render={() => (
+            <ScorecardPage
+              user={user}
+              score={score}
+              roundId={roundId}
+              hole={hole}
+            />
+          )}
         ></Route>
         <Route
           exact
           path="/score"
           render={() => (
-            <RecordScore
-              handleScoring={handleScoring}
-              roundId={roundId}
-            />
+            <RecordScore handleScoring={handleScoring} roundId={roundId} />
           )}
         ></Route>
-        <Route exact path="/rounds" render={() => <Rounds />}></Route>
         <Route
           exact
           path="/newround"
