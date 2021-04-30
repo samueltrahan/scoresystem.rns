@@ -10,7 +10,7 @@ import ForgotPasswordPage from "../ForgotPasswordPage/ForgotPasswordPage";
 import ResetPasswordPage from "../ResetPasswordPage/ResetPasswordPage";
 import UserPage from "../UserPage/UserPage";
 import LandingPage from "../LandingPage/LandingPage";
-import ScorecardPage from "../ScoreCardPage/ScarecardPage";
+import ScorecardPage from "../ScoreCardPage/ScorecardPage";
 import Footer from "../../components/Footer/Footer";
 import RecordScore from "../RecordScore/RecordScore";
 import NewRound from "../Rounds/newRound";
@@ -101,7 +101,7 @@ const App = () => {
   }, []);
 
   return (
-    <>
+    <div className="App">
       <NavBar user={user} handleLogout={handleLogout} />
 
       <Switch>
@@ -160,6 +160,7 @@ const App = () => {
             </>
           )}
         ></Route>
+
         <Route
           exact
           path="/"
@@ -171,6 +172,7 @@ const App = () => {
             />
           )}
         ></Route>
+
         <Route
           exact
           path="/scorecard/:id"
@@ -183,6 +185,7 @@ const App = () => {
             />
           )}
         ></Route>
+
         <Route
           exact
           path="/score"
@@ -190,6 +193,7 @@ const App = () => {
             <RecordScore handleScoring={handleScoring} roundId={roundId} />
           )}
         ></Route>
+
         <Route
           exact
           path="/newround"
@@ -205,7 +209,7 @@ const App = () => {
         ></Route>
       </Switch>
       <Footer />
-    </>
+    </div>
   );
 };
 

@@ -1,7 +1,9 @@
 .footer {
-    display: grid;
-  grid-template-rows: 1fr 1fr;
     background-color: gold;
+    display: grid;
+    font-family: 'Lato', sans-serif;
+    grid-template-rows: 1fr 1fr;
+    width: 100vw;
 }
 
 .samuel {

@@ -5,12 +5,11 @@ import Scorecard from "../../components/Scorecard/Scorecard";
 
 
 
-export default function ScarecardPage({ user, roundId, hole, score }) {
+export default function ScorecardPage({ user, roundId, hole, score }) {
  
 
   return (
-    <div>
-  
+    <div className="ScoreCardPage">
       {scoreCardDB.map((scorecard) => (
         <Scorecard  scorecard={scorecard} roundId={roundId} hole={hole} score={score} />
       ))}
