@@ -19,23 +19,28 @@ export default function Scorecard({ scorecard, score, roundId, hole }) {
         Par {scorecard.par} Handicap {scorecard.handicap}
       </div>
       <div className="dots-section">
-        <img className="dots" src={BlackDot} alt=""></img> {scorecard.black}
-        <img className="dots" src={YellowDot} alt=""></img>
-        {scorecard.yellow}
-        <img className="dots" src={Silver} alt=""></img> {scorecard.silver}
-        <img className="dots" src={Green} alt=""></img>
-        {scorecard.green}
-        <img className="dots" src={Tan} alt=""></img>
-        {scorecard.tan}
+        <img className="dots" src={BlackDot} alt="black dot" />{scorecard.black}
+        <img className="dots" src={YellowDot} alt="yellow dot" /> {scorecard.yellow}
+        <img className="dots" src={Silver} alt="silver dot" /> {scorecard.silver}
+        <img className="dots" src={Green} alt="green dot" /> {scorecard.green}
+        <img className="dots" src={Tan} alt="tan dot" /> {scorecard.tan}
       </div>
       <div className="score">{scorecard.hole}</div>
       <Link
-        to={{ hole: scorecard.hole, par: scorecard.par, handicap: scorecard.handicap, black: scorecard.black, yellow: scorecard.yellow, silver: scorecard.silver, green: scorecard.green, tan: scorecard.tan, pathname: "/score" }}
         className="score-player"
+        to={{ 
+          hole: scorecard.hole, 
+          par: scorecard.par, 
+          handicap: scorecard.handicap, 
+          black: scorecard.black, 
+          yellow: scorecard.yellow, 
+          silver: scorecard.silver, 
+          green: scorecard.green, 
+          tan: scorecard.tan, 
+          pathname: "/score" 
+        }}
       >
-        <div
-          className="score-player"
-        >
+        <div>
           Score
           <Score scorecard={scorecard} score={score} roundId={roundId} hole={hole} />
         </div>

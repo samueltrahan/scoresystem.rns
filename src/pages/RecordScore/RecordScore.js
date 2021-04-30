@@ -31,31 +31,19 @@ export default function RecordScore({handleScoring}) {
         <h5>Handicap {location.handicap}</h5>
       </div>
       <div className="record-yardages">
-        <p>
-          <img className="record-dots" src={Black} alt=""></img>{" "}
-          {location.black}
-        </p>
-        <p>
-          <img className="record-dots" src={Yellow} alt="" /> {location.yellow}
-        </p>
-        <p>
-          <img className="record-dots" src={Silver} alt="" /> {location.silver}
-        </p>
-        <p>
-          <img className="record-dots" src={Green} alt="" /> {location.green}
-        </p>
-        <p>
-          {" "}
-          <img className="record-dots" src={Tan} alt="" /> {location.tan}
-        </p>
+          <img className="record-dots" src={Black} alt="black dot" /> {location.black}
+          <img className="record-dots" src={Yellow} alt="yellow dot" /> {location.yellow}
+          <img className="record-dots" src={Silver} alt="silver dot" /> {location.silver}
+          <img className="record-dots" src={Green} alt="green dot" /> {location.green}
+          <img className="record-dots" src={Tan} alt="tan dot" /> {location.tan}
       </div>
       <div className="counter">
         <button className="counter-btn" onClick={decrementCount}>
-          <i className="fas fa-arrow-left fa-2x"></i>
+          <i className="fas fa-arrow-left fa-2x counter-arrow" />
         </button>
-        <h3>{counter}</h3>
+        <h3 className="counter-value">{counter}</h3>
         <button className="counter-btn" onClick={incrementCount}>
-          <i className="fas fa-arrow-right fa-2x"></i>{" "}
+          <i className="fas fa-arrow-right fa-2x counter-arrow" />
         </button>
       </div>
       <div className="submit-score">
