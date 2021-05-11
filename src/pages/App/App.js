@@ -45,61 +45,7 @@ const App = () => {
     return "green-text";
   };
 
-  const handleScoring = async (e, score, hole) => {
-    setHole(hole);
-    axios.post(`http://localhost:3001/api/rounds/create`, {
-      holeIdx: hole,
-      score: score,
-      roundId: roundId,
-      nickName: nickName,
-      date: date,
-      user: user.id,
-      completed: false,
-    });
-    history.push(`/scorecard/${roundId}`);
-  };
-
-  function startNewRound() {
-    axios.post("http://localhost:3001/api/rounds/newround", {
-      round: roundId,
-      nickName: nickName,
-      date: date,
-      userId: user.id,
-      holeIdx: 0,
-      score: 0,
-      completed: false,
-    });
-    history.push(`/scorecard/${roundId}`);
-  }
-
-  function getScorecardInfo() {
-    axios
-      .get(`http://localhost:3001/api/rounds/${roundId}`)
-      .then((response) => {
-        console.log(response.data);
-        setScorecardInfo(response.data);
-      });
-  }
-
-  function getCurrentRound() {
-    axios
-      .get(`http://localhost:3001/api/rounds/completed`)
-      .then((response) => {
-        if(!response) {
-          setScorecardInfo(response.data)
-          setCompleted(false)
-        } else {
-          setCompleted(true)
-        }
-      });
-  }
-
-  useEffect(() => {
- 
-    getCurrentRound()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+  
   return (
     <div className="App">
       <NavBar user={user} handleLogout={handleLogout} />
@@ -166,47 +112,12 @@ const App = () => {
           path="/"
           render={() => (
             <LandingPage
-              completed={completed}
-              getCurrentRound={getCurrentRound}
-              roundId={roundId}
+    
             />
           )}
         ></Route>
 
-        <Route
-          exact
-          path="/scorecard/:id"
-          render={() => (
-            <ScorecardPage
-              user={user}
-              score={score}
-              roundId={roundId}
-              hole={hole}
-            />
-          )}
-        ></Route>
-
-        <Route
-          exact
-          path="/score"
-          render={() => (
-            <RecordScore handleScoring={handleScoring} roundId={roundId} />
-          )}
-        ></Route>
-
-        <Route
-          exact
-          path="/newround"
-          render={() => (
-            <NewRound
-              user={user}
-              roundId={roundId}
-              startNewRound={startNewRound}
-              setNickName={setNickName}
-              setDate={setDate}
-            />
-          )}
-        ></Route>
+        
       </Switch>
       <Footer />
     </div>
