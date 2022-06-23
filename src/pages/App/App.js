@@ -10,10 +10,7 @@ import ForgotPasswordPage from "../ForgotPasswordPage/ForgotPasswordPage";
 import ResetPasswordPage from "../ResetPasswordPage/ResetPasswordPage";
 import UserPage from "../UserPage/UserPage";
 import LandingPage from "../LandingPage/LandingPage";
-import ScorecardPage from "../ScoreCardPage/ScorecardPage";
 import Footer from "../../components/Footer/Footer";
-import RecordScore from "../RecordScore/RecordScore";
-import NewRound from "../Rounds/newRound";
 
 import userService from "../../services/userService";
 
@@ -22,14 +19,6 @@ import "./App.css";
 const App = () => {
   const [user, setUser] = useState("");
 
-  const [roundId, setRoundId] = useState(uuidv4());
-  const [hole, setHole] = useState();
-  const [nickName, setNickName] = useState("");
-  const [score, setScore] = useState([]);
-  const [date, setDate] = useState();
-  const [scorecardInfo, setScorecardInfo] = useState();
-  const history = useHistory();
-  const [completed, setCompleted] = useState();
 
   const handleLogout = () => {
     userService.logout();
