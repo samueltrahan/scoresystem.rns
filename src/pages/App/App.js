@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Route, Switch, useHistory } from "react-router-dom";
-import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
+import React, { useState } from "react";
+import { Route, Switch} from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 
 import LoginPage from "../LoginPage/LoginPage";
