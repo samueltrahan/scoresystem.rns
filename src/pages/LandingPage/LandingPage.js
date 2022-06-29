@@ -10,11 +10,12 @@ export default function LandingPage({completed, getCurrentRound, roundId}) {
             </div>
             <div className="button-grid">
                 <div className="scorecard">
-                    {completed ? (
+                    {/* {completed ? (
                         <Link className="landing-link" to="/newround">SCORECRAD</Link>
                     ) : (
                         <Link className="landing-link" to={`/scorecard/${roundId}`}>SCORECARD</Link>
-                    )}
+                    )} */}
+                    <Link className="landing-link" to="/scorecard">SCORECARD</Link>
                 </div>
                 <div className="leaderboard">
                     <Link className="landing-link" to="scorecard">LEADERBOARD</Link>

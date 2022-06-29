@@ -10,6 +10,10 @@ import UserPage from "../UserPage/UserPage";
 import LandingPage from "../LandingPage/LandingPage";
 import Footer from "../../components/Footer/Footer";
 
+
+
+import ScoreCardPage from '../../pages/ScoreCardPage/ScoreCardPage';
+
 import userService from "../../services/userService";
 
 import "./App.css";
@@ -99,6 +103,16 @@ const App = () => {
           path="/"
           render={() => (
             <LandingPage
+    
+            />
+          )}
+        ></Route>
+
+          <Route
+          exact
+          path="/scorecard"
+          render={() => (
+            <ScoreCardPage
     
             />
           )}
